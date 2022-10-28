@@ -67,7 +67,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 
                 string resp = await PostEventToBCAsync(JsonConvert.SerializeObject(new { inputJson = requestBody}), log);
-log.LogInformation(resp);
+                log.LogInformation(resp);
                 return new OkObjectResult(resp);
             }
             catch(Exception ex)
@@ -87,7 +87,7 @@ log.LogInformation(resp);
 public static async Task<string> PostEventToBCAsync(string jsonBody, ILogger log)
 {
     HttpClient client = new HttpClient(); 
-    string svcCredentials = EncodeTo64(ADMIN_USERNAME + ":" + ADMIN_PASSWORD));
+    string svcCredentials = EncodeTo64(ADMIN_USERNAME + ":" + ADMIN_PASSWORD);
     client.DefaultRequestHeaders.Add("Authorization", $"Basic {svcCredentials}");
     var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
     string postUri = $"{BASE_URI}/SquareOAuthService_GetSquareWebhookRequest?company={COMPANY_ID}";
@@ -101,7 +101,7 @@ public static async Task<string> PostEventToBCAsync(string jsonBody, ILogger log
 public static async Task<string> PostAuthCodeToBCAsync(string jsonBody, ILogger log)
 {
     HttpClient client = new HttpClient();
-    string svcCredentials = EncodeTo64(ADMIN_USERNAME + ":" + ADMIN_PASSWORD));
+    string svcCredentials = EncodeTo64(ADMIN_USERNAME + ":" + ADMIN_PASSWORD);
     client.DefaultRequestHeaders.Add("Authorization", $"Basic {svcCredentials}");
     var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
     string postUri = $"{BASE_URI}/SquareOAuthService_GetAuthorizationCode?company={COMPANY_ID}";
