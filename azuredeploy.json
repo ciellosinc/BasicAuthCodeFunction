@@ -73,7 +73,7 @@
     },
     "repoURL": {
       "type": "string",
-      "defaultValue": "https://github.com/ciellos-dev/OAuthCodeFunction.git",
+      "defaultValue": "https://github.com/ciellosinc/BasicAuthCodeFunction.git",
       "metadata": {
         "description": "The URL for the GitHub repository that contains the project to deploy."
       }
